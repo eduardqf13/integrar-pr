@@ -6,13 +6,12 @@
     /* Cores */
     --color-primary: #0b447a;
     --color-primary-dark: #072f55;
-    --color-primary-light: #026389;
+    --color-primary-light: #0a8fc4;
     --color-accent: #F2F3F5;
     --color-text: #6B6B6B;
-    --color-text-dark: #3A3A3A;
+    --color-text-dark: #1E1E1E;
     --color-transparent: rgb(148 163 184 / var(--tw-text-opacity, 1));
     --color-white: #ffff;
-    --color-black: #000000;
     /*azul marinho: #0E1A4B versão um pouco mais clara: #1F2F7A
     azul medio: #3A5BFF - icones de cards, etc
     azul claro: #AAB6FF
@@ -27,6 +26,7 @@
     --color-accent: #1FA7A8;
     --color-text: rgb(92, 92, 92);
     --color-text-dark: rgb(10, 10, 56);;
+    --color-primary-light: #026389;
 
     /* Gradiente */
     --gradient-dark: linear-gradient(135deg, #0c111d, #1e3a8a);
@@ -85,22 +85,20 @@ h1 {
 }
 
 h2 {
-    margin-bottom: var(--space-sm);
-    color: var(--color-black);
-    font-size: var(--text-2xl);
+    color: var(--color-text-dark);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
 }
 
 h3 {
-    margin-bottom: 0.75rem;
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--color-black);
+    color: var(--color-text-dark);
+    font-size: 2rem;
 }
 
 p {
     font-size: var(--text-lg);
     color: var(--color-text);
-    margin-bottom: var(--space-sm);
 }
 
 a {
@@ -176,24 +174,6 @@ li {
     margin-left: -6px;
 }
 
-.cta-btn {
-    background-color: var(--color-accent);
-    padding: 0.8rem var(--space-md);
-    border-radius: var(--radius-sm);
-    display: flex;
-    font-weight: 500;
-}
-
-.cta-btn svg {
-    padding-left: 0.3rem;
-}
-
-.cta-btn:hover {
-    color: var(--color-primary-dark);
-    background-color: #dae4ec;
-
-}
-
 /* =========================
    HEADER
 ========================= */
@@ -221,6 +201,11 @@ header img {
     align-items: center;
 }
 
+header a:hover {
+    color: #7fa9ba;
+    ;
+}
+
 .btn-nav {
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -232,10 +217,6 @@ header img {
 .btn-nav:hover {
     background-color: var(--color-primary-dark);
     color: var(--color-white);
-}
-
-header a:hover {
-    color: #7fa9ba;;
 }
 
 /* =====================
@@ -270,10 +251,16 @@ header a:hover {
     line-height: 1.8rem;
 }
 
+.lighter-words {
+    color: var(--color-primary-light);
+}
+
 .hero p {
     margin-bottom: var(--space-lg);
     color: var(--color-transparent);
 }
+
+/* buttons */
 
 .btn-outline,
 .btn-primary {
@@ -312,8 +299,6 @@ header a:hover {
     padding: var(--space-2xl);
     display: grid;
     gap: var(--space-xl);
-    justify-items: center;
-    background: rgba(236, 237, 242, 0.875);
 }
 
 .services-header {
@@ -323,52 +308,44 @@ header a:hover {
     text-align: center;
 }
 
+.services-header h2 {
+    color: var(--color-primary-light);
+}
+
+.services-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-lg);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    justify-self: start;
+    padding-left: var(--space-xl);
 }
 
-.service-card {
-    padding: var(--space-lg);
-    max-width: 22rem;
-    background-color: var(--color-white);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: transform var(--transition-fast);
-    display: flex;
-    flex-direction: column;
-}
-
-.service-card:hover {
-    transform: scale(1.05);
-}
-
-.service-card .start-icon {
-    max-width: 3.4rem;
-}
-
-.about-card > .start-icon {
-    margin: 0.5rem;
-}
-
-.card-text {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+.service-text {
+    max-width: 25rem;
     line-height: var(--space-md);
 }
 
-.card-text h3 {
+.service-text h3 {
     font-size: var(--text-lg);
-    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    color: var(--color-primary-dark);
 }
 
-.card-text p {
+.services-grid h3::before {
+    content: "● ";
+    color: var(--color-primary-light);
+}
+
+.service-text p {
     font-size: var(--text-sm);
 }
 
-.card-text li {
+.service-text li {
     font-size: var(--text-xs);
     color: rgb(76, 76, 76);
     list-style: circle;
@@ -378,15 +355,28 @@ header a:hover {
     color: #30bff7;
 }
 
-.card-link {
+.services-grid .services-link {
+    display: inline-flex;
+    justify-content: right;
+}
+
+.services-link {
     font-size: var(--text-sm);
     margin-top: auto;
     padding-top: var(--space-md);
     color: #30bff7;
 }
 
-.card-link:hover {
+.services-link:hover {
     color: #2285ac;
+}
+
+.services-img {
+    text-align: center;
+}
+
+.services-img img {
+    max-width: 30rem;
 }
 
 /* =====================
@@ -394,8 +384,8 @@ header a:hover {
 ===================== */
 
 .areas-of-expertise {
-    padding: 0 var(--space-xl) 4rem;
-    background: rgba(236, 237, 242, 0.875);
+    padding: var(--space-xl) var(--space-2xl);
+    background-color: var(--color-white);
 }
 
 .expertise-content {
@@ -408,7 +398,7 @@ header a:hover {
 .expertise-list {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 2rem; /* 32px */
+    gap: 2rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -453,21 +443,32 @@ header a:hover {
 ===================== */
 
 .outsourcing {
-    padding: var(--space-2xl);
+    padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
-.outsourcing h3 {
+.outsourcing-text h2 {
     color: var(--color-primary-light);
 }
 
+.outsourcing-text h3 {
+    margin-bottom: var(--space-xs);
+}
+
+.outsourcing-text p {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-md);
+}
+
+/* card */
+
 .outsourcing-card {
-    background: var(--gradient-dark);
+    background: var(--color-primary-dark);
     position: relative;
     overflow: hidden;
-    padding: var(--space-lg);   
+    padding: var(--space-sm) var(--space-md) var(--space-md);
     border-radius: var(--radius-lg);
 }
 
@@ -475,24 +476,26 @@ header a:hover {
     background-color: transparent;
 }
 
-.card-title {
-    display: flex;
-    align-items: center;
-}
-
 .outsourcing-card svg {
     fill: var(--color-white);
 }
 
+.outsourcing-card__title {
+    display: flex;
+    align-items: center;
+}
+
 .outsourcing-card h2 {
-    font-size: var(--text-xxl);
+    font-size: var(--text-xl);
     color: var(--color-white);
 }
 
 .outsourcing-card p {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     color: var(--color-accent);
 }
+
+/* grid - ul */
 
 .outsourcing-li {
     display: flex;
@@ -501,21 +504,13 @@ header a:hover {
 
 .outsourcing-ul {
     display: grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-}
-
-.outsourcing-ul h3 {
-    color: var(--color-black);
-}
-
-.outsourcing-ul p {
-    font-size: var(--text-xs);
 }
 
 .outsourcing-ul li {
     display: grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -526,198 +521,13 @@ header a:hover {
     max-height: 3.4rem;
 }
 
-/* =====================
-   METODOLOGIA (HOME)
-===================== */
-
-.methodology {
-    padding: var(--space-lg) var(--space-2xl) var(--space-2xl);
-}
-
-.methodology-content h3 {
-    color: var(--color-primary-light);
-}
-
-.methodology-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-}
-
-.methodology ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.lists {
-    display: grid;
-    gap: 1rem;
-}
-
-.features {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-}
-
-.methodology-content .start-icon {
-    background: none;
-}
-
-.methodology-content .start-icon svg {
-    fill: var(--color-text-dark);
-    max-width: 1.5rem;
-    max-height: 1.5rem;
-}
-
-.card {
-    padding: 0.9rem;
-    background-color: var(--color-accent);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-}
-
-.tags {
-    padding: var(--space-sm);
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    background-color: var(--color-text);
-    border-radius: var(--radius-md);
-    text-align: center;
-}
-
-.tag-list {
-    padding: var(--space-xs);    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.tag {
-    padding: var(--space-xs);
-    background-color: var(--color-accent);
-    border-radius: var(--radius-md);
-}
-
-.methodology-ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.methodology-li {
-    display: flex;
-    align-items: center;
-}
-
-.methodology-item {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-        "icon title"
-        "icon text";
-        display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
-}
-
-.methodology-text h2 {
-    margin-bottom: var(--space-xs);
-    font-size: var(--text-xl);
-}
-
-.methodology-text p {
+.outsourcing-ul-text h3 {
     font-size: var(--text-base);
+    margin-bottom: var(--space-xs);
 }
 
-/* =====================
-   ABOUT (HOME)
-===================== */
-
-.about {
-    padding: var(--space-2xl) 6rem;
-    background: var(--gradient-dark);
-    position: relative;
-    overflow: hidden;
-}
-
-.about::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.35);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 0;
-}
-
-.about-content {
-    position: relative;
-    z-index: 1;
-}
-
-.about h2 {
-    font-size: var(--text-3xl);
-    color: var(--color-white);
-}
-
-.about p {
-    font-size: var(--text-lg);
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.about-header p {
-    padding-bottom: var(--space-xl);
-    color: var(--color-white);
-}
-
-.about-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-}
-
-.about-benefits {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: var(--space-xl);
-    width: 100%;
-    height: 100%;
-}
-
-.about-benefits:hover {
-    background: rgba(255, 255, 255, 0.127);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.about-cards li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 10rem;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-}
-
-.about-benefits h3 {
-    padding-bottom: 0.8rem;
-    font-size: var(--text-lg);
-    color: var(--color-white);
-}
-
-.about-benefits p {
-    font-size: var(--text-sm);
-    opacity: 1;
-    color: rgb(148 163 184 / var(--tw-text-opacity, 1));
+.outsourcing-ul p {
+    font-size: var(--text-xs);
 }
 
 /* =====================
@@ -738,7 +548,7 @@ header a:hover {
     text-align: center;
 }
 
-.cta h2 {
+.cta h3 {
     font-size: var(--text-3xl);
     color: var(--color-white);
 }
@@ -747,6 +557,24 @@ header a:hover {
     margin: var(--space-md) 0 var(--space-lg);
     --tw-text-opacity: 1;
     color: var(--color-transparent);
+}
+
+.cta-btn {
+    background-color: var(--color-accent);
+    padding: 0.8rem var(--space-md);
+    border-radius: var(--radius-sm);
+    display: flex;
+    font-weight: 500;
+}
+
+.cta-btn svg {
+    padding-left: 0.3rem;
+}
+
+.cta-btn:hover {
+    color: var(--color-primary-dark);
+    background-color: #dae4ec;
+
 }
 
 /* =====================
@@ -775,10 +603,11 @@ footer {
     align-items: flex-start;
     color: var(--color-white);
     max-width: 22rem;
+    margin-top: var(--space-md);
 }
 
 .footer-brand img {
-    max-width: 16rem;
+    max-width: 12rem;
     height: auto;
     display: block;
 }
@@ -846,16 +675,69 @@ footer {
 }
 
 /* =========================
-   SERVICES DETAILS (PÁGINA SERVIÇOS)
+   CTA - TOP
 ========================= */
 
+.cta-top {
+    background: var(--gradient-dark);
+    position: relative;
+    overflow: hidden;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: var(--space-2xl) 0;
+}
+
+.cta-top h3,
+.cta-top h2,
+.cta-top p,
+.services-header h3,
+.services-header h2,
+.services-header p,
+.contract-header h3,
+.contract-header h2,
+.contract-header p {
+    max-width: 50vw;
+}
+
+.cta-top h2 {
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+}
+
+.cta-top h3 {
+    font-size: var(--text-3xl);
+    color: var(--color-accent);
+}
+
+.cta-top p {
+    margin: var(--space-md) 0 var(--space-lg);
+    text-align: center;
+    color: var(--color-transparent);
+    font-size: var(--text-lg);
+}
+
+/* =========================
+   SERVICES DETAILS (PÁGINA SERVIÇOS)
+========================= */
+.areas {
+    padding: var(--space-2xl);
+}
+
 .areas-header {
-    padding: var(--space-2xl) var(--space-2xl) var(--space-xl);
+    padding-bottom: var(--space-xl);
     justify-items: center;
 }
 
+.areas-header h2 {
+    color: var(--color-primary-light);
+}
+
 .areas-grid {
-    padding: 0 var(--space-3xl) var(--space-2xl);
+    padding: 0 var(--space-sm);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -888,7 +770,7 @@ footer {
 ========================= */
 
 .types-contract {
-    padding: var(--space-2xl) var(--space-3xl) ;
+    padding: var(--space-2xl) var(--space-3xl);
     background-color: var(--color-accent);
 }
 
@@ -898,8 +780,12 @@ footer {
     padding-bottom: var(--space-xl);
 }
 
-.contract-header h3 {
+.contract-header h2 {
     color: var(--color-primary-light);
+}
+
+.contract-header h3 {
+    margin-bottom: var(--space-sm);
 }
 
 .contract-grid {
@@ -908,12 +794,14 @@ footer {
     gap: 2rem;
 }
 
+/* Card */
+
 .contract-card {
     display: flex;
     flex-direction: column;
 }
 
-.contract-card > .start-icon {
+.icon-without-bg {
     background-color: transparent;
 }
 
@@ -923,21 +811,40 @@ footer {
     color: var(--color-accent);
 }
 
+.contract-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .contract-card li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
     font-weight: 300;
-    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
     font-size: var(--text-sm);
+}
+
+.contract-card li:last-child {
+    margin-bottom: var(--space-md);
 }
 
 .contract-card p {
     font-size: var(--text-sm);
-    color: var(--color-primary-dark);
+    color: var(--color-primary);
 }
 
 .contract-content {
     background-color: var(--color-primary-dark);
     padding: var(--space-md);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.arrow {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--color-primary);
 }
 
 .contract-text {
@@ -950,60 +857,10 @@ footer {
     height: 100%;
 }
 
-.contract-text > .divider {
+.contract-text>.divider {
     background: var(--color-accent);
     margin: 1rem 0 1rem;
     margin-top: auto;
-}
-
-/* =========================
-   CTA - TOP
-========================= */
-
-.cta-top {
-    background: var(--gradient-dark);
-    position: relative;
-    overflow: hidden;
-    min-height: 20rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    padding: var(--space-2xl) 0;
-}
-
-.cta-top h3,
-.cta-top h2,
-.cta-top p,
-.services-header h3,
-.services-header h2,
-.services-header p,
-.contract-header h3,
-.contract-header h2,
-.contract-header p {
-    max-width: 50vw;
-}
-
-.cta-top h3,
-.services-header h3 {
-    color: var(--color-accent);
-}
-
-.cta-top h2 {
-    font-size: var(--space-xl);
-    color: var(--color-accent);
-}
-
-.lighter-words {
-    color: var(--color-primary-light);
-}
-
-.cta-top p {
-    margin: var(--space-md) 0 var(--space-lg);
-    text-align: center;
-    color: var(--color-transparent);
-    font-size: var(--text-lg);
 }
 
 /* =========================
@@ -1014,39 +871,60 @@ footer {
     padding: 6rem 11rem;
     background-color: var(--color-white);
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "text v-divider card"
+        "logo v-divider card"
+        "logo v-divider card";
     gap: 5rem;
 }
 
-.history-img {
-    background-color: #dae0e6;
-    border-radius: var(--radius-lg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.text {
+    grid-area: text;
 }
 
-.history-img img {
-    max-width: 13rem;
+.logo {
+    grid-area: logo;
 }
 
-.history h3 {
+.card {
+    grid-area: card;
+}
+
+.divider-vertical {
+    grid-area: v-divider;
+    align-self: stretch;
+    background: var(--color-primary);
+}
+
+.history-text h2 {
     color: var(--color-primary-light);
 }
 
-.history h2 {
-    font-size: 3rem;
+.history-text h3 {
+    font-size: var(--text-2xl);
     margin-bottom: var(--space-lg);
 }
 
-.history p {
+.history-text p {
     font-size: var(--text-lg);
+}
+
+.text p:not(:last-child) {
     margin-bottom: var(--space-md);
 }
 
-.about-section {
-    background-image: var(--gradient-dark);
+.history-img {
+    align-content: center;
+    text-align: center;
 }
+
+.history-img img {
+    max-width: 18rem;
+}
+
+/* Card */
 
 .about-values,
 .values {
@@ -1055,81 +933,221 @@ footer {
 }
 
 .about-values {
-    padding: var(--space-2xl) 7rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.history .divider {
+    background: var(--color-primary);
+    width: auto;
+    height: 1px;
+    margin: var(--space-sm) 0 var(--space-sm);
 }
 
 .about-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: var(--space-xl);
-    border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
 }
 
-.about-card:hover {
-    background: rgba(255, 255, 255, 0.127);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+.about-card svg {
+    fill: var(--color-primary-dark);
+}
+
+.about-card .start-icon {
+    margin: 0;
+}
+
+.about-title {
+    display: flex;
+    align-items: center;
 }
 
 .about-card h3 {
     font-size: var(--text-xl);
-    color: var(--color-white);
+    color: var(--color-primary-dark);
 }
 
 .about-card p {
+    font-size: var(--text-base);
+}
+
+/* =====================
+   METODOLOGIA
+===================== */
+
+.methodology {
+    padding: var(--space-2xl);
+    background: var(--gradient-dark);
+}
+
+.methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.methodology h2 {
+    color: var(--color-primary-light);
+}
+
+.methodology h3 {
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+}
+
+.methodology p {
     font-size: var(--text-base);
     opacity: 1;
     color: rgb(148 163 184 / var(--tw-text-opacity, 1));
 }
 
-.values {
-    text-align: center;
-    padding: 0 var(--space-2xl) var(--space-2xl);
-}
+/* Lista */
 
-.values-text h3 {
-    color: var(--color-white);
-}
-
-.values-text h2 {
-    font-size: 2rem;
-    color: var(--color-white);
-    margin-bottom: var(--space-lg);
-}
-
-.values-cards {
+.methodology-lists {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1rem;
 }
 
-.values-card {
+.methodology-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: var(--space-sm);
+}
+
+.methodology-feature {
+    padding: 0.8rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.056);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.252);
+}
+
+.methodology-content .start-icon {
+    background: none;
+}
+
+.methodology-content .start-icon svg {
+    fill: var(--color-accent);
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+}
+
+.methodology-content .methodology-feature {
+    color: var(--color-accent);
+}
+
+/* Tags - lista */
+
+.tags {
+    padding: var(--space-md);
+    display: grid;
+    grid-template-rows: auto;
+    border-radius: var(--radius-md);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.056);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.252);
+}
+
+.tags__heading {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-md);
+    color: var(--color-accent);
+}
+
+.tag-list {
+    padding: var(--space-xs);
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    color: var(--color-accent);
+}
+
+.cert-tag {
+    font-weight: 600;
+    font-size: var(--text-xs);
+    color: var(--color-primary-dark);
+}
+
+.tags svg {
+    max-width: var(--space-lg);
+    fill: var(--color-accent);
+}
+
+.cert-tag {
+    padding: var(--space-xs);
+    border-radius: var(--radius-md);
+    min-width: 6rem;
+    min-height: 4.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: var(--space-sm);
-    border-radius: var(--radius-lg);
 }
 
-.values-card h3 {
-    font-size: var(--text-lg);
-    color: var(--color-white);
+.cert-tag:hover {
+    background: rgba(255, 255, 255, 0.127);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.252);
 }
 
-.values-card p {
-    font-size: var(--text-sm);
-    opacity: 1;
-    color: rgb(148 163 184 / var(--tw-text-opacity, 1));
+/* Methodology - lista */
+
+.methodology-item {
+    display: flex;
+    align-items: center;
+}
+
+.methodology-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.methodology-li {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "number title"
+        "number text";
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.step-number {
+    font-variant-numeric: tabular-nums;
+}
+
+.number {
+    font-size: var(--text-3xl);
+    font-weight: 1000;
+    color: var(--color-primary-light);
+}
+
+.methodology-text {
+    color: var(--color-accent);
+}
+
+.methodology-text h2 {
+    color: var(--color-accent);
+}
+
+.methodology-item__title {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-xl);
+}
+
+.methodology-item__description {
+    font-size: var(--text-base);
 }
 
 /* =========================
