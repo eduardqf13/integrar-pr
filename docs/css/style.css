@@ -29,7 +29,6 @@
     --color-primary-light: #026389;
 
     /* Gradiente */
-    --gradient: linear-gradient(to right, #6B6B6B, #1E1E1E);
     --gradient-dark: linear-gradient(135deg, #0c111d, #1e3a8a);
 
     /* Espaçamentos */
@@ -75,7 +74,6 @@
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--color-white);
 }
 
 h1 {
@@ -224,27 +222,33 @@ header a:hover {
 ===================== */
 
 .hero {
-    min-height: 30rem;
-    padding: var(--space-2xl) 7rem;
-    background: var(--gradient-dark);
-    position: relative;
+    min-height: 85vh;
+    padding: 7rem;
+    background-image:
+        linear-gradient(to right,
+            rgba(10, 25, 47, 0.85) 0%,
+            rgba(10, 25, 47, 0.6) 35%,
+            rgba(10, 25, 47, 0.3) 55%,
+            rgba(10, 25, 47, 0) 75%),
+        url(../imgs/hero-bg.jpg);
     overflow: hidden;
-}
-
-.hero-content {
-    max-width: 60vw;
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
     position: relative;
-    z-index: 1;
 }
 
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.35);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 0;
+    background: linear-gradient(to right, rgba(10, 25, 47, 0.85), transparent);
+}
+
+.hero-content {
+    max-width: 60vw;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-text {
@@ -261,6 +265,13 @@ header a:hover {
     font-size: var(--text-lg);
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 26rem;
+    max-height: 3rem;
+}
+
 /* buttons */
 
 .btn-primary,
@@ -270,7 +281,15 @@ header a:hover {
     font-weight: bold;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+}
+
+.btn-primary svg,
+.btn-secondary svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
 }
 
 .btn-primary {
@@ -285,7 +304,6 @@ header a:hover {
 .btn-secondary {
     background: #6B6B6B;
     color: var(--color-white);
-    border: 2px solid var(--gradient);
 }
 
 .btn-secondary:hover {
@@ -356,16 +374,14 @@ header a:hover {
     color: #30bff7;
 }
 
-.services-grid .services-link {
-    display: inline-flex;
-    justify-content: right;
-}
-
 .services-link {
     font-size: var(--text-sm);
     margin-top: auto;
     padding-top: var(--space-md);
     color: #30bff7;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
 }
 
 .services-link:hover {
@@ -507,13 +523,12 @@ header a:hover {
     transform: translateY(-50%);
     height: 1.4rem;
     width: 0.8px;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .tab {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .tab-title {
@@ -710,16 +725,31 @@ footer {
 ========================= */
 
 .cta-top {
-    background: var(--gradient-dark);
     position: relative;
     overflow: hidden;
-    min-height: 20rem;
+    min-height: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
     padding: var(--space-2xl) 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.cta-top::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(10, 25, 47, 0.612);
+    pointer-events: none;
+}
+
+.cta-top>* {
+    position: relative;
+    z-index: 1;
 }
 
 .cta-top h3,
@@ -732,6 +762,16 @@ footer {
 .contract-header h2,
 .contract-header p {
     max-width: 50vw;
+}
+
+.cta--services {
+    background-image: url(../imgs/servicespg.jpg);
+    background-position: center 43%;
+}
+
+.cta--about {
+    background-image: url(../imgs/aboutpg.jpg);
+    background-position: center;
 }
 
 .cta-top h2 {
@@ -755,7 +795,7 @@ footer {
    SERVICES DETAILS (PÁGINA SERVIÇOS)
 ========================= */
 .areas {
-    padding: var(--space-2xl) var(--space-3xl);
+    padding: var(--space-3xl);
 }
 
 .areas-header {
@@ -822,7 +862,7 @@ footer {
 }
 
 .areas-text {
-    text-align: center;
+    text-align: start;
     position: absolute;
     bottom: 24px;
     left: 24px;
@@ -837,6 +877,10 @@ footer {
     z-index: 2;
 }
 
+.areas-text .divider {
+    margin: 0 0 0.5rem;
+}
+
 .areas-text p {
     font-size: var(--text-sm);
     opacity: 0.9;
@@ -848,7 +892,7 @@ footer {
 ========================= */
 
 .types-contract {
-    padding: var(--space-2xl) var(--space-3xl);
+    padding: var(--space-3xl);
     background: var(--color-accent);
 
 }
@@ -920,7 +964,7 @@ footer {
 }
 
 .contract-content {
-    background: linear-gradient(135deg, #092e51, #1e62a1);
+    background: var(--color-primary);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     padding: var(--space-md);
     border-radius: var(--radius-md) var(--radius-md) 0 0;
@@ -934,7 +978,7 @@ footer {
 
 .contract-text {
     padding: var(--space-md);
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
     border-radius: 0 0 var(--radius-md) var(--radius-md);
     min-height: 15rem;
     display: flex;
@@ -954,7 +998,7 @@ footer {
 ========================= */
 
 .history {
-    padding: 6rem 11rem;
+    padding: var(--space-3xl);
     background-color: var(--color-white);
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
@@ -1065,7 +1109,7 @@ footer {
 ===================== */
 
 .methodology {
-    padding: var(--space-2xl);
+    padding: var(--space-3xl);
     background: var(--gradient-dark);
 }
 
@@ -1101,7 +1145,9 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    margin-top: var(--space-sm);
+    margin: var(--space-sm) 0 0;
+    padding: 0;
+    list-style: none;
 }
 
 .methodology-feature {
