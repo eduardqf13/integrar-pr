@@ -11,22 +11,8 @@
     --color-text: #6B6B6B;
     --color-text-dark: #1E1E1E;
     --color-transparent: rgb(148 163 184 / var(--tw-text-opacity, 1));
-    --color-white: #ffff;
-    /*azul marinho: #0E1A4B versão um pouco mais clara: #1F2F7A
-    azul medio: #3A5BFF - icones de cards, etc
-    azul claro: #AAB6FF
-    azul vibrante: #4C6FFF
-    cinza grafite: #3A3A3A
-    cinza médio: #6B6B6B
-    cinza claro (quase branco): #F2F3F5
-    como estava antes:width: 
-    --color-primary: #0b447a;
-    --color-primary-dark: #072f55;
-    --color-primary-light: #2cb2e8;
-    --color-accent: #1FA7A8;
-    --color-text: rgb(92, 92, 92);
-    --color-text-dark: rgb(10, 10, 56);;
-    --color-primary-light: #026389;
+    --color-white: #ffffff;
+    /*--color-text-dark: rgb(10, 10, 56);*/
 
     /* Gradiente */
     --gradient-dark: linear-gradient(135deg, #0c111d, #1e3a8a);
@@ -198,6 +184,11 @@ header img {
     display: flex;
     gap: var(--space-lg);
     align-items: center;
+}
+
+.header-ul {
+    display: flex;
+    gap: var(--space-lg);
 }
 
 header a:hover {
@@ -594,6 +585,14 @@ header a:hover {
     text-align: center;
 }
 
+.cta--content-services {
+    max-width: 60vw;
+}
+
+.cta h2 {
+    color: var(--color-accent);
+}
+
 .cta h3 {
     font-size: var(--text-3xl);
     color: var(--color-white);
@@ -674,6 +673,8 @@ footer {
     padding: var(--space-lg) 0;
 }
 
+/*footer contact*/
+
 .footer-nav,
 .footer-contact {
     display: flex;
@@ -689,16 +690,18 @@ footer {
 }
 
 .footer-nav a,
+.footer-contact a,
 .footer-contact li {
     color: var(--color-white);
     font-size: var(--text-sm);
     font-weight: 300;
 }
 
-.footer-nav a:hover {
+footer a:hover {
     color: #7fa9ba;
 }
 
+.footer-nav ul,
 .footer-contact ul {
     display: flex;
     flex-direction: column;
@@ -742,7 +745,6 @@ footer {
     content: "";
     position: absolute;
     inset: 0;
-
     background: rgba(10, 25, 47, 0.612);
     pointer-events: none;
 }
@@ -752,8 +754,8 @@ footer {
     z-index: 1;
 }
 
-.cta-top h3,
-.cta-top h2,
+.cta-top span,
+.cta-top h1,
 .cta-top p,
 .services-header h3,
 .services-header h2,
@@ -774,19 +776,20 @@ footer {
     background-position: center;
 }
 
-.cta-top h2 {
+.cta-top .section-label {
     color: var(--color-accent);
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
 }
 
-.cta-top h3 {
+.cta-top h1 {
     font-size: var(--text-3xl);
     color: var(--color-accent);
+    margin-top: var(--space-xs);
 }
 
-.cta-top p {
-    margin: var(--space-md) 0 var(--space-lg);
+.cta-top p{
     text-align: center;
+    --tw-text-opacity: 1;
     color: var(--color-transparent);
     font-size: var(--text-lg);
 }
@@ -805,7 +808,7 @@ footer {
 }
 
 .areas-header h2 {
-    color: var(--color-primary-light);
+    font-size: var(--text-2xl);
 }
 
 .areas-header p {
@@ -904,11 +907,8 @@ footer {
 }
 
 .contract-header h2 {
-    color: var(--color-primary-light);
-}
-
-.contract-header h3 {
     margin-bottom: var(--space-sm);
+    font-size: var(--text-2xl);
 }
 
 .contract-grid {
@@ -1002,24 +1002,15 @@ footer {
     background-color: var(--color-white);
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
     grid-template-areas:
-        "text v-divider card"
-        "logo v-divider card"
-        "logo v-divider card";
+        "text v-divider card";
     gap: 5rem;
+    align-items: start;
 }
 
-.text {
-    grid-area: text;
-}
-
-.logo {
-    grid-area: logo;
-}
-
-.card {
-    grid-area: card;
+.history-content {
+    display: block;
 }
 
 .divider-vertical {
@@ -1028,17 +1019,18 @@ footer {
     background: var(--color-primary);
 }
 
-.history-text h2 {
-    color: var(--color-primary-light);
+.history-text {
+    grid-area: text;
 }
 
-.history-text h3 {
+.history-text h2 {
     font-size: var(--text-2xl);
     margin-bottom: var(--space-lg);
 }
 
-.history-text p {
+.history-text .history-description {
     font-size: var(--text-lg);
+    color: var(--color-text);
 }
 
 .text p:not(:last-child) {
@@ -1046,8 +1038,9 @@ footer {
 }
 
 .history-img {
-    align-content: center;
-    text-align: center;
+    grid-area: text;
+    justify-self: center;
+    margin-top: var(--space-2xl);
 }
 
 .history-img img {
@@ -1119,16 +1112,22 @@ footer {
     gap: 3rem;
 }
 
-.methodology h2 {
+.section-label {
+    display: block;
+    font-size: var(--text-base);
     color: var(--color-primary-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-xs);
 }
 
-.methodology h3 {
+.methodology h2 {
     color: var(--color-accent);
     margin-bottom: var(--space-sm);
+    font-size: var(--text-2xl);
 }
 
-.methodology p {
+.methodology .methodology-description {
     font-size: var(--text-base);
     opacity: 1;
     color: rgb(148 163 184 / var(--tw-text-opacity, 1));
@@ -1231,6 +1230,10 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.252);
 }
 
+.cert-tag span {
+    color: var(--color-accent);
+}
+
 /* Methodology - lista */
 
 .methodology-item {
@@ -1245,11 +1248,6 @@ footer {
 }
 
 .methodology-li {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-        "number title"
-        "number text";
     display: flex;
     justify-content: flex-start;
     gap: 1rem;
@@ -1269,18 +1267,146 @@ footer {
     color: var(--color-accent);
 }
 
-.methodology-text h2 {
+.methodology-text h3 {
     color: var(--color-accent);
-}
-
-.methodology-item__title {
     margin-bottom: var(--space-xs);
     font-size: var(--text-xl);
 }
 
-.methodology-item__description {
-    font-size: var(--text-base);
+.methodology-text p {
+        font-size: var(--text-sm);
+
+    opacity: 1;
+    color: rgb(148 163 184 / var(--tw-text-opacity, 1));
 }
+
+/* =========================
+   CONTACT (PÁGINA FALE CONOSCO)
+========================= */
+.cta-contact {
+    background-image: url(../imgs/reuniao.jpg);
+    background-position: center 60%;    
+}
+
+.contact {
+    padding: var(--space-2xl) var(--space-3xl);
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+/*header*/
+
+.contact-header .section-label {
+    color: var(--color-primary-light);
+}
+
+.contact-header h2 {
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-2xl);
+}
+
+/*lista*/
+
+.contact-ul ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-ul {
+    margin-top: var(--space-lg);
+}
+
+.contact-ul .start-icon {
+    gap: 0.5rem;
+    background: #E6E9EF;
+}
+
+.contact-ul svg {
+    fill: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}
+
+.contact-ul li {
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+.contact-li {
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-li-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.contact-li-text h4{
+    margin:var(--space-xs) 0 0;
+}
+
+.contact-li-text p {
+    font-size: var(--text-sm);
+}
+
+.email-block {
+    display: flex;
+    gap: 3rem;
+    margin: 0.4rem 0.8rem;
+}
+
+.email-adress {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.email-adress span {
+    color: var(--color-text-dark);
+}
+
+.email-adress a {
+    color: var(--color-primary);
+}
+
+.email-adress a:hover {
+    color: var(--color-primary-light);
+}
+
+.contact-li + .contact-li {
+    border-top: 1px solid var(--color-primary-light);
+    padding-top: var(--space-md);
+}
+
+.map {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.map-content {
+    background-color: var(--color-accent);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+}
+
+.cta-map {
+    padding: var(--space-sm);
+}
+
+.cta-map h3 {
+    font-size: var(--text-xxl);
+    margin-bottom: var(--space-xs);
+}
+
+.cta-map p {
+    margin-bottom: var(--space-xs);
+}
+
 
 /* =========================
    RESPONSIVO
